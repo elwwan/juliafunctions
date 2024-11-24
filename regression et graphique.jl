@@ -1,9 +1,8 @@
 using CSV
 using DataFrames
 using CairoMakie
-@time import Statistics.mean
-@time import Statistics
-@time 11+1
+using Statistics
+
 function calculate_regression_line(x_data, y_data)
   x̄, ȳ = mean(x_data), mean(y_data)
   slope = sum([(x - x̄) * (y - ȳ) for (x, y) in zip(x_data, y_data)]) / sum([(x - x̄)^2 for x in x_data])
