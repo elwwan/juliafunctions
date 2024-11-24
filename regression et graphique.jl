@@ -1,10 +1,9 @@
 using CSV
 using DataFrames
 using CairoMakie
-using Statistics
 
 function calculate_regression_line(x_data, y_data)
-  x̄, ȳ = mean(x_data), mean(y_data)
+  x̄, ȳ = sum(x_data)/length(x_data), sum(y_data)/length(y_data)
   slope = sum([(x - x̄) * (y - ȳ) for (x, y) in zip(x_data, y_data)]) / sum([(x - x̄)^2 for x in x_data])
   intercept = ȳ - slope * x̄
   return slope, intercept
