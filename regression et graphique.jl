@@ -2,7 +2,7 @@ using CSV
 using DataFrames
 using CairoMakie
 
-function calculate_regression_line(x_data, y_data)
+function linear_regression(x_data, y_data)
   x̄, ȳ = sum(x_data)/length(x_data), sum(y_data)/length(y_data)
   slope = sum([(x - x̄) * (y - ȳ) for (x, y) in zip(x_data, y_data)]) / sum([(x - x̄)^2 for x in x_data])
   intercept = ȳ - slope * x̄
@@ -16,7 +16,7 @@ function create_graph(file_path::String, output_path::String, x_column_index::In
     y_data = data_frame[:, y_column_index]
     data_points = Point2f.(x_data, y_data)
     
-    slope, intercept = calculate_regression_line(x_data, y_data)
+    slope, intercept = linear_regression(x_data, y_data)
     
     fig = Figure()
     axis = Axis(fig[1, 1],
