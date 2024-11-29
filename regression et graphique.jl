@@ -1,3 +1,4 @@
+import Pkg; Pkg.add(["CSV", "DataFrames", "CairoMakie"])
 using CSV
 using DataFrames
 using CairoMakie
@@ -8,6 +9,8 @@ function linear_regression(x_data, y_data)
   intercept = ȳ - slope * x̄
   return slope, intercept
 end
+
+find_theoritical_value(x, intercept, slope) = x*slope + intercept
 
 
 function create_graph(file_path::String, output_path::String, x_column_index::Int = 2, y_column_index::Int = 3; title="", xlabel="", ylabel="", subtitle="")
