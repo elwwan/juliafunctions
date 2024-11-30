@@ -1,5 +1,5 @@
 using Test
-include("../regression et graphique.jl")
+include("../regression_et_graphique.jl")
 
 # Tests
 @testset "linear_regression tests" begin
