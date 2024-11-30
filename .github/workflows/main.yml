@@ -1,0 +1,29 @@
+name: Run Tests
+
+on:
+  pull_request:
+    branches:
+      - main  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    #  Check out the code
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    #  Set up Julia
+    - name: Set up Julia
+      uses: julia-actions/setup-julia@v1
+      with:
+        version: '1.11' # Use the version of Julia you need
+
+    # Install dependencies
+    - name: Install dependencies
+      run: julia -e 'using Pkg; Pkg.instantiate()'
+
+    # Run tests
+    - name: Run tests
+      run: julia --project=. tests/linear_regression.jl
