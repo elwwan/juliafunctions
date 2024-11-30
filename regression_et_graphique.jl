@@ -2,7 +2,7 @@ import Pkg; Pkg.add(["CSV", "DataFrames", "CairoMakie"])
 using CSV
 using DataFrames
 using CairoMakie
- 
+
 function linear_regression(x_data::Vector{R}, y_data::Vector{R}) where R <: Real
   
   length_x, length_y = length(x_data), length(y_data)
