@@ -26,4 +26,4 @@ jobs:
 
     # Run tests
     - name: Run tests
-      run: julia --project=. tests/linear_regression.jl
+      run: julia --project=. tests/test_linear_regression.jl
