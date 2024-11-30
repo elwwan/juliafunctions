@@ -1,5 +1,6 @@
 using Test
-include("../regression_et_graphique.jl")
+cd("juliafunctions")
+include("regression_et_graphique.jl")
 
 # Tests
 @testset "linear_regression tests" begin
