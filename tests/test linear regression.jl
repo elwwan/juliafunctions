@@ -1,5 +1,5 @@
 using Test
-include("regression_linéaire.jl")
+include("../regression_linéaire.jl")
 
 # Tests
 @testset "linear_regression tests" begin
