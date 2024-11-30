@@ -3,10 +3,24 @@ using CSV
 using DataFrames
 using CairoMakie
 
-function linear_regression(x_data, y_data)
-  x̄, ȳ = sum(x_data)/length(x_data), sum(y_data)/length(y_data)
-  slope = sum([(x - x̄) * (y - ȳ) for (x, y) in zip(x_data, y_data)]) / sum([(x - x̄)^2 for x in x_data])
+function linear_regression(x_data::Vector{R}, y_data::Vector{R}) where R <: Real
+  
+  length_x, length_y = length(x_data), length(y_data)
+  length_x !== length_y ? throw(ArgumentError("X and Y must have the same length.")) : nothing
+  length_x == 0 ? throw(ErrorException("Either X or Y is empty")) : nothing
+
+  if length(x_data) == 1
+      return 0.0, y_data[1]
+  end
+
+  x̄, ȳ = sum(x_data) / length(x_data), sum(y_data) / length(y_data)
+  
+  denominator = sum([(x - x̄)^2 for x in x_data])
+  denominator == 0 ? throw(DivideError()) : nothing
+
+  slope = sum([(x - x̄) * (y - ȳ) for (x, y) in zip(x_data, y_data)]) / denominator
   intercept = ȳ - slope * x̄
+
   return slope, intercept
 end
 
