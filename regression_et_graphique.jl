@@ -9,7 +9,7 @@ function linear_regression(x_data::Vector{R}, y_data::Vector{R}) where R <: Real
   length_x !== length_y ? throw(ArgumentError("X and Y must have the same length.")) : nothing
   length_x == 0 ? throw(ErrorException("Either X or Y is empty")) : nothing
 
-  if length(x_data) == 1
+  if length_x == 1
       return 0.0, y_data[1]
   end
 
