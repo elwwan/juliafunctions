@@ -16,7 +16,7 @@ function linear_regression(x_data::Vector{R}, y_data::Vector{R}) where R <: Real
   x̄, ȳ = sum(x_data) / length_x, sum(y_data) / length_y
   
   denominator = sum([(x - x̄)^2 for x in x_data])
-  denominator == 0 ? throw(DivideError("The denominator can't be equal to zero)) : nothing
+  denominator == 0 ? throw(DivideError("The denominator can't be equal to zero")) : nothing
 
   slope = sum([(x - x̄) * (y - ȳ) for (x, y) in zip(x_data, y_data)]) / denominator
   intercept = ȳ - slope * x̄
